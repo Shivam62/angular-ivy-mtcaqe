@@ -1,4 +1,69 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<div class="container">
+  <h2>Candidates</h2>
+  <div class="row">
+    <label>
+ <input type="checkbox" value="Male" [(ngModel)] = "isMChecked" (change) = "checkValue(isMChecked?'Male':'Female')"> 
+ <span>Male </span>
+ </label>
+
+    <label>
+  <input type="checkbox" value="Female" [(ngModel)] = "isFChecked" (change) = "checkValue(isFChecked?'Female':'Male')">
+  <span>Female </span>
+  </label>
+
+    <input type="text" placeholder="Whom are you looking for?">
+
+  </div>
+  <div>
+    <table>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last name</th>
+      <th> Email </th>
+      <th> Gender </th>
+      <tbody *ngFor="let element of data">
+        <tr>
+          <td>{{element.id}}</td>
+          <td>{{element.first_name}}
+          <td>
+          <td>{{element.last_name}}
+          <td>
+          <td>{{element.email}}
+          <td>
+          <td>{{element.gender}}
+          <td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <form [formGroup]="candidateForm">
+    <div class="form-group">
+      <input type="text" formControlName ="fname" placeholder="First Name">
+    </div>
+
+    <div class="form-group">
+      <input type="text" formControlName="lname" placeholder="Last Name">
+    </div>
+
+    <div class="form-group">
+      <input type="text" formControlName="email" placeholder="Email">
+    </div>
+
+    <div class="form-group">
+      <label>
+      <input type="radio" formControlName="gender" value="Male">
+      <span>male</span>
+      </label>
+      <label>
+        <input type="radio" formControlName="gender" value="Female">
+        <span>female</span>
+        </label>
+    </div>
+
+    <div class="form-group">
+      <input type="button" value="Add" (click)="add()">
+    </div>
+
+
+  </form>
+</div>
